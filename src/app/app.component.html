@@ -4,8 +4,7 @@
       <button mat-icon-button class="td-menu-button" (click)="sidenav.toggle()" mdTooltip="Main menu">
         <mat-icon>menu</mat-icon>
       </button>
-      <mat-icon class="mat-icon-logo" svgIcon="assets:covalent"></mat-icon>
-      <span>Contacts</span>
+      <span>Pessoas</span>
       <span flex></span>
       <button mat-icon-button><mat-icon>apps</mat-icon></button>
       <button mat-icon-button><mat-icon>notifications</mat-icon></button>
@@ -15,7 +14,7 @@
       <mat-sidenav #sidenav mode="side" opened="true" style="width:257px;border-right:1px solid #ccc">
         <div flex class="mat-content bgc-grey-50">
           <mat-nav-list>
-            <a mat-list-item class="active"><mat-icon matListIcon>contacts</mat-icon>Contacts</a>
+            <a mat-list-item class="active"><mat-icon matListIcon>contacts</mat-icon>Pessoas</a>
             <a mat-list-item><mat-icon matListIcon>history</mat-icon>Frequently contacted</a>
             <a mat-list-item><mat-icon matListIcon>business</mat-icon>Directory</a>
             <a mat-list-item><mat-icon matListIcon>content_copy</mat-icon>Duplicates</a>
@@ -33,17 +32,17 @@
       <div tdMediaToggle="gt-xs" [mediaClasses]="['push-md']">
         <mat-card>
           <mat-nav-list flex>
-            <ng-template let-item let-i="index" let-last="last" ngFor [ngForOf]="[0,1,2,3,4,5,6,7,8,9]">
-              <a mat-list-item (click)="openDialog()">
-                <img matListAvatar src="https://api.adorable.io/avatars/285/{{i}}@adorable.io.png" />
-                <h4 matLine class="cursor-pointer"> Firstname Lastname </h4>
-                <span flex="100" class="mat-caption tc-grey-600">first.last@email.com</span>
-                <button mat-icon-button matTooltip="Star contact"><mat-icon>star_outline</mat-icon></button>
-                <button mat-icon-button matTooltip="Edit contact"><mat-icon>edit</mat-icon></button>
-                <button mat-icon-button matTooltip="More actions"><mat-icon>more_vert</mat-icon></button>
-              </a>
-              <mat-divider *ngIf="!last" mat-inset></mat-divider>
-            </ng-template>
+            <div *ngFor="let pessoa of pessoas" >
+                <a mat-list-item (click)="openDialog()">
+                  <img matListAvatar src="https://api.adorable.io/avatars/285/{{i}}@adorable.io.png" />
+                  <h4 matLine class="cursor-pointer"> {{pessoa.nome}} </h4>
+                  <span flex="100" class="mat-caption tc-grey-600">{{pessoa.email}}</span>
+                  <button mat-icon-button matTooltip="Star contact"><mat-icon>star_outline</mat-icon></button>
+                  <button mat-icon-button matTooltip="Edit contact"><mat-icon>edit</mat-icon></button>
+                  <button mat-icon-button matTooltip="More actions"><mat-icon>more_vert</mat-icon></button>
+                </a>
+                <mat-divider *ngIf="!last" mat-inset></mat-divider>
+            </div>
           </mat-nav-list>
         </mat-card>
       </div>

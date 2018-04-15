@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Http, HttpModule, JsonpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
@@ -16,6 +17,7 @@ import { MatButtonModule, MatListModule, MatIconModule, MatCardModule, MatMenuMo
 import { CovalentCommonModule, CovalentLayoutModule, CovalentMediaModule, CovalentExpansionPanelModule,
          CovalentStepsModule, CovalentLoadingModule, CovalentDialogsModule, CovalentSearchModule, CovalentPagingModule,
          CovalentNotificationsModule, CovalentMenuModule, CovalentDataTableModule, CovalentMessageModule } from '@covalent/core';
+import { PessoaService } from './service/pessoa.service';
 
 @NgModule({
   imports:      [
@@ -63,7 +65,9 @@ import { CovalentCommonModule, CovalentLayoutModule, CovalentMediaModule, Covale
     CovalentMenuModule,
     CovalentDataTableModule,
     CovalentMessageModule,
+    HttpClientModule,
     ],
+  providers: [ PessoaService ],
   declarations: [ AppComponent, HelloComponent ],
   bootstrap:    [ AppComponent ]
 })

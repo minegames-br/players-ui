@@ -1,10 +1,12 @@
-# covalent-contacts-template
+# Pessoas Web
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
 
-## Development server
+## Para testar
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Rode `npm install` depois de fazer o `git clone https://github.com/joaoemilio/pessoas-web.git`
+
+Rode `npm start` para executar o servidor local. Abra um browser na URL `http://localhost:4200/`. O aplicativo vai aparecer e tentará fazer a chamada da API `pessoas` publicada no WSO2 API-M. Logo, será preciso instalar o WSO2 API-M 2.2.0 e publicar essa API que vai chamar um microservico criado utilizando o framework de microserviços da WSO2, o MSF4J. 
 
 ## Code scaffolding
 
