@@ -4,20 +4,39 @@ import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs/Observable';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import { OAuthService } from 'angular-oauth2-oidc';
 
 
 export class Service {
 
+    protected accessToken: string;
     protected _api: string;
-    protected httpOptions;
 
-    constructor(protected http: Http, protected httpClient: HttpClient) {
-        this.httpOptions = {
+    constructor(protected http: Http, 
+        protected httpClient: HttpClient,               
+        protected oauthService: OAuthService, 
+    ) {
+
+    }
+
+    protected getHttpOptions(): any {
+        let bearer = "";
+        if( this.oauthService.getAccessToken() == null || this.oauthService.getAccessToken() == "") {
+            bearer = this.accessToken;
+        } else {
+            bearer = this.oauthService.getAccessToken();
+        }
+        let httpOptions = {
             headers: new HttpHeaders({
-              'Content-Type':  'application/json',
-              'Authorization': 'Bearer 32192487-167e-306e-94c7-8dce29ab1678'
+              'Accept':  'application/json',
+              'Authorization': `Bearer ${bearer}`
             })
         };
+        return httpOptions;
+    }
+
+    public setAccessToken(accessToken: string): void {
+        this.accessToken = accessToken;
     }
 
     public findAll(): any[] {
@@ -27,7 +46,8 @@ export class Service {
 
     public getList(): any {
         let url = `${environment.api_gateway_url}${this._api}`;
-        return this.httpClient.get( url, this.httpOptions);
+        console.log( url );
+        return this.httpClient.get( url, this.getHttpOptions() );
     }
 
     public delete(_id: string): Observable<any> {

@@ -5,5 +5,8 @@
 
 export const environment = {
   production: false,
-  api_gateway_url: "http://localhost:8280/pessoas/1.0.0/"
+  api_gateway_url: "https://localhost:8243/pessoadss/1.0.0/",
+  access_token: ""
 };
+
+//  api_gateway_url: "https://localhost:8243/pessoas/1.0.0/",

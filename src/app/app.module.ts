@@ -17,7 +17,9 @@ import { MatButtonModule, MatListModule, MatIconModule, MatCardModule, MatMenuMo
 import { CovalentCommonModule, CovalentLayoutModule, CovalentMediaModule, CovalentExpansionPanelModule,
          CovalentStepsModule, CovalentLoadingModule, CovalentDialogsModule, CovalentSearchModule, CovalentPagingModule,
          CovalentNotificationsModule, CovalentMenuModule, CovalentDataTableModule, CovalentMessageModule } from '@covalent/core';
+
 import { PessoaService } from './service/pessoa.service';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({
   imports:      [
@@ -66,6 +68,8 @@ import { PessoaService } from './service/pessoa.service';
     CovalentDataTableModule,
     CovalentMessageModule,
     HttpClientModule,
+    OAuthModule.forRoot()
+
     ],
   providers: [ PessoaService ],
   declarations: [ AppComponent, HelloComponent ],
