@@ -67,7 +67,8 @@ export class AppComponent  {
   ngOnInit(): void {
     // recuperar o personal que está usando o sistema
     this._titleService.setTitle('Pessoas');
-    this.authenticate();
+    this.load("1");
+    //this.authenticate();
   }
 
   public authenticate() {
@@ -110,7 +111,7 @@ export class AppComponent  {
       this._pessoaService.setAccessToken( accessToken );
       this._pessoaService.getList( ).subscribe( data => {
         console.log("data: " + data);
-        self.pessoas = data.LIST.pessoa as Pessoa[];
+        self.pessoas = data as Pessoa[];
       });
     } catch (error) {
       console.log( error );

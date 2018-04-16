@@ -17,7 +17,7 @@ export class PessoaService extends Service {
         protected oauthService: OAuthService, 
     ) {
         super(http, httpClient, oauthService);
-        this._api = 'pessoas';
+        this._api = 'pessoa';
     }
 
 }

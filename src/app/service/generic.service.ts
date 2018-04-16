@@ -21,6 +21,18 @@ export class Service {
 
     protected getHttpOptions(): any {
         let bearer = "";
+
+        let httpOptions = {
+            headers: new HttpHeaders({
+              'Accept':  'application/json',
+              'Authorization': `Bearer ${environment.access_token}`
+            })
+        };
+        return httpOptions;
+    }
+    /*
+    protected getHttpOptions(): any {
+        let bearer = "";
         if( this.oauthService.getAccessToken() == null || this.oauthService.getAccessToken() == "") {
             bearer = this.accessToken;
         } else {
@@ -34,6 +46,7 @@ export class Service {
         };
         return httpOptions;
     }
+*/
 
     public setAccessToken(accessToken: string): void {
         this.accessToken = accessToken;
