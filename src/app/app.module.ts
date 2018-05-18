@@ -14,10 +14,6 @@ import { MatButtonModule, MatListModule, MatIconModule, MatCardModule, MatMenuMo
          MatTabsModule, MatSidenavModule, MatTooltipModule, MatRippleModule, MatRadioModule, MatGridListModule,
          MatDatepickerModule, MatNativeDateModule, MatSliderModule, MatAutocompleteModule } from '@angular/material';
 
-import { CovalentCommonModule, CovalentLayoutModule, CovalentMediaModule, CovalentExpansionPanelModule,
-         CovalentStepsModule, CovalentLoadingModule, CovalentDialogsModule, CovalentSearchModule, CovalentPagingModule,
-         CovalentNotificationsModule, CovalentMenuModule, CovalentDataTableModule, CovalentMessageModule } from '@covalent/core';
-
 import { PessoaService } from './service/pessoa.service';
 import { OAuthModule } from 'angular-oauth2-oidc';
 
@@ -53,20 +49,6 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     MatNativeDateModule,
     MatSliderModule,
     MatAutocompleteModule,
-    /** Covalent Modules */
-    CovalentCommonModule,
-    CovalentLayoutModule,
-    CovalentMediaModule,
-    CovalentExpansionPanelModule,
-    CovalentStepsModule,
-    CovalentDialogsModule,
-    CovalentLoadingModule,
-    CovalentSearchModule,
-    CovalentPagingModule,
-    CovalentNotificationsModule,
-    CovalentMenuModule,
-    CovalentDataTableModule,
-    CovalentMessageModule,
     HttpClientModule,
     OAuthModule.forRoot()
 
