@@ -12,6 +12,10 @@ import { JwksValidationHandler } from 'angular-oauth2-oidc';
 })
 export class AppComponent  {
   name = 'Players';
+  accessToken = "";
+  validAccessToken = false;
+  idToken = "";
+  validIdToken = false;
   players: Player[];
   filteredList: Player[];
   username: string;
@@ -94,6 +98,14 @@ export class AppComponent  {
   }
 
   async load( accessToken: string ): Promise<void> {
+
+    console.log( "load" );
+    console.log( "validate jwks: " + this.oauthService.hasValidIdToken);
+    this.validAccessToken = this.oauthService.hasValidAccessToken();
+    this.validIdToken = this.oauthService.hasValidIdToken();
+    this.accessToken = this.oauthService.getAccessToken();
+    this.idToken = this.oauthService.getIdToken();
+
     try {
       let self = this;
       this._playerService.setAccessToken( accessToken );
