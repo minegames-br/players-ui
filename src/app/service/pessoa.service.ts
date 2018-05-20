@@ -38,7 +38,7 @@ export class PessoaService extends Service {
     }
 
     public getUserInfo(): any {
-        let url = "https://app1ssosite014h.hom.sicredi.net:8243/userinfo?schema=openid";
+        let url = environment.api_gateway_url + "/userinfo?schema=openid";
         console.log( url );
         return this.httpClient.get( url, this.getHttpOptions() );
     }
