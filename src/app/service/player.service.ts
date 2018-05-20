@@ -38,7 +38,7 @@ export class PlayerService extends Service {
     }
 
     public getUserInfo(): any {
-        let url = environment.api_gateway_url + "/userinfo?schema=openid";
+        let url = environment.user_info_url;
         console.log( url );
         return this.httpClient.get( url, this.getHttpOptions() );
     }
