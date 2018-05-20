@@ -1,6 +1,14 @@
 export const environment = {
-  production: false,
-  //api_gateway_url: "https://localhost:8243/pessoadss/1.0.0/",
-  api_gateway_url: "https://app1ssosite014h.hom.sicredi.net:8243/wso2/1.0.0/",
+  production: true,
+  api_gateway_url: "https://gateway.minegames.com.br/",
+  openid : {
+    strictDiscoveryDocumentValidation : false,
+    issuer : 'https://apim.minegames.com.br/oauth2/token',
+    loginUrl : "https://apim.minegames.com.br/oauth2/authorize",
+    redirectUri : "http://players.minegames.com.br",
+    clientId : "xdtnOFzaaxOPB651ocEQSmiwn9ca",
+    scope : "openid",
+    oidc : true
+  },
   access_token: ""
 };
