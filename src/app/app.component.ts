@@ -58,6 +58,7 @@ export class AppComponent  {
     this.oauthService.redirectUri = environment.openid.redirectUri;
     this.oauthService.clientId = environment.openid.clientId;
     this.oauthService.scope = environment.openid.scope;
+    this.oauthService.tokenValidationHandler = new JwksValidationHandler();
     this.oauthService.oidc = true;
     this.oauthService.setStorage(sessionStorage);
 
