@@ -61,33 +61,35 @@ export class AppComponent  {
     this.oauthService.tokenValidationHandler = new JwksValidationHandler();
     this.oauthService.oidc = true;
     this.oauthService.setStorage(sessionStorage);
-
-    this.oauthService.tryLogin({
-      onTokenReceived: context => {
-          console.log('onTokenReceived:', context);
-          console.log( 'accessToken: ' + context.accessToken);
-          environment.access_token = context.accessToken;
-          console.log( 'load' );
-          this.load( context.accessToken );
-          let claims = this.oauthService.getIdentityClaims();
-          console.log( 'claims: ', claims );
-      },
-      onLoginError: (err) => {
-          console.log('onLoginError:', err);
-      }
-    }).then(() => {
-        if (!this.oauthService.hasValidIdToken() || !this.oauthService.hasValidAccessToken()) {
-          console.log('vai chamar initImplicitFlow()');
-          console.error( 'implicit' );
-            this.oauthService.initImplicitFlow();
-        } else {
-          console.log( 'load no else to hasValidToken()' );
-          console.log( 'access token: ' + this.oauthService.getAccessToken() );
-          console.log( 'id token: ' + this.oauthService.getIdToken() );
-          this.load( this.oauthService.getAccessToken() );
-          console.log('sub: ' + this.oauthService.getIdentityClaims()['sub'] );
+    this.oauthService.setupAutomaticSilentRefresh();
+    this.oauthService.loadDiscoveryDocument( environment.openid.discovery_url ).then(() => {
+      this.oauthService.tryLogin({
+        onTokenReceived: context => {
+            console.log('onTokenReceived:', context);
+            console.log( 'accessToken: ' + context.accessToken);
+            environment.access_token = context.accessToken;
+            console.log( 'load' );
+            this.load( context.accessToken );
+            let claims = this.oauthService.getIdentityClaims();
+            console.log( 'claims: ', claims );
+        },
+        onLoginError: (err) => {
+            console.log('onLoginError:', err);
         }
-    });    
+      }).then(() => {
+          if (!this.oauthService.hasValidIdToken() || !this.oauthService.hasValidAccessToken()) {
+            console.log('vai chamar initImplicitFlow()');
+            console.error( 'implicit' );
+              this.oauthService.initImplicitFlow();
+          } else {
+            console.log( 'load no else to hasValidToken()' );
+            console.log( 'access token: ' + this.oauthService.getAccessToken() );
+            console.log( 'id token: ' + this.oauthService.getIdToken() );
+            this.load( this.oauthService.getAccessToken() );
+            console.log('sub: ' + this.oauthService.getIdentityClaims()['sub'] );
+          }
+      });      
+    });
 
   }
 
