@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  api_gateway_url: "https://gateway.minegames.com.br",
+  api_gateway_url: "https://gateway.minegames.com.br/player/1.0.0/",
   openid : {
     strictDiscoveryDocumentValidation : false,
     issuer : 'https://apim.minegames.com.br/oauth2/token',
