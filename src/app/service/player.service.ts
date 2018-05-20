@@ -7,7 +7,7 @@ import { OAuthService } from 'angular-oauth2-oidc';
 import { HttpHeaders } from '@angular/common/http';
 
 @Injectable()
-export class PessoaService extends Service {
+export class PlayerService extends Service {
 
     constructor(protected http: Http, 
         protected httpClient: HttpClient,

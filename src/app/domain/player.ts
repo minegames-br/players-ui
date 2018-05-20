@@ -1,6 +1,6 @@
-export class Pessoa  {
+export class Player  {
 
-    public nome: string;
+    public name: string;
     public id: number;
     public email: string;
 

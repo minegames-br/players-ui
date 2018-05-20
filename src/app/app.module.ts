@@ -14,7 +14,7 @@ import { MatButtonModule, MatListModule, MatIconModule, MatCardModule, MatMenuMo
          MatTabsModule, MatSidenavModule, MatTooltipModule, MatRippleModule, MatRadioModule, MatGridListModule,
          MatDatepickerModule, MatNativeDateModule, MatSliderModule, MatAutocompleteModule } from '@angular/material';
 
-import { PessoaService } from './service/pessoa.service';
+import { PlayerService } from './service/player.service';
 import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({
@@ -53,7 +53,7 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     OAuthModule.forRoot()
 
     ],
-  providers: [ PessoaService ],
+  providers: [ PlayerService ],
   declarations: [ AppComponent, HelloComponent ],
   bootstrap:    [ AppComponent ]
 })

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import { Pessoa } from './domain/pessoa';
-import { PessoaService } from './service/pessoa.service';
+import { Player } from './domain/player';
+import { PlayerService } from './service/player.service';
 import { OAuthService } from 'angular-oauth2-oidc';
 import {environment} from '../environments/environment';
 import { JwksValidationHandler } from 'angular-oauth2-oidc';
@@ -11,9 +11,9 @@ import { JwksValidationHandler } from 'angular-oauth2-oidc';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-  name = 'Pessoas';
-  pessoas: Pessoa[];
-  filteredList: Pessoa[];
+  name = 'Players';
+  players: Player[];
+  filteredList: Player[];
   username: string;
   title: string;
   logotipo: string;
@@ -43,7 +43,7 @@ export class AppComponent  {
 
   constructor(
               private oauthService: OAuthService, 
-              private _pessoaService: PessoaService) {
+              private _playerService: PlayerService) {
   }
 
   ngOnInit(): void {
@@ -61,40 +61,6 @@ export class AppComponent  {
     this.oauthService.oidc = true;
     this.oauthService.setStorage(sessionStorage);
 
-/*
-    console.log('loadDiscoveryDocument - inicio');
-    //this.oauthService.loadDiscoveryDocumentAndTryLogin();
-    this.oauthService.loadDiscoveryDocument(environment.openid.URLWELLKNOWN).then((doc) => {
-      console.log('JWKS ' + JSON.stringify(this.oauthService.jwks) );
-      this.oauthService.tryLogin({
-        onTokenReceived: context => {
-            console.log('onTokenReceived:', context);
-            console.log( 'accessToken: ' + context.accessToken);
-            environment.access_token = context.accessToken;
-            console.log( 'load' );
-            this.load( context.accessToken );
-            let claims = this.oauthService.getIdentityClaims();
-            console.log( 'claims: ', claims );
-        },
-        onLoginError: (err) => {
-            console.log('onLoginError:', err);
-        }
-      }).then(() => {
-          if (!this.oauthService.hasValidIdToken() || !this.oauthService.hasValidAccessToken()) {
-            console.log('vai chamar initImplicitFlow()');
-            console.error( 'implicit' );
-              this.oauthService.initImplicitFlow();
-          } else {
-            console.log( 'load no else to hasValidToken()' );
-            console.log( 'access token: ' + this.oauthService.getAccessToken() );
-            console.log( 'id token: ' + this.oauthService.getIdToken() );
-            this.load( this.oauthService.getAccessToken() );
-            console.log('sub: ' + this.oauthService.getIdentityClaims()['sub'] );
-          }
-      });
-    });
-    console.log('loadDiscoveryDocument - fim');
-*/
     this.oauthService.tryLogin({
       onTokenReceived: context => {
           console.log('onTokenReceived:', context);
@@ -127,14 +93,14 @@ export class AppComponent  {
   async load( accessToken: string ): Promise<void> {
     try {
       let self = this;
-      this._pessoaService.setAccessToken( accessToken );
-      this._pessoaService.getList( ).subscribe( data => {
+      this._playerService.setAccessToken( accessToken );
+      this._playerService.getList( ).subscribe( data => {
         console.log("data: " + data);
-        //self.pessoas = data.LIST.pessoa as Pessoa[];
-        self.pessoas = data as Pessoa[];
+        //self.players = data.LIST.player as Player[];
+        self.players = data as Player[];
       });
       console.log("chamar userinfo");
-      this._pessoaService.getUserInfo().subscribe( data => {
+      this._playerService.getUserInfo().subscribe( data => {
         console.log( "userinfo - inicio" );
         console.log( JSON.stringify( data ) );
         this.username = data['sub'];
@@ -142,9 +108,9 @@ export class AppComponent  {
       });
     } catch (error) {
       console.log( error );
-      this.pessoas = [];
+      this.players = [];
     } finally {
-      this.filteredList = this.pessoas as Pessoa[];
+      this.filteredList = this.players as Player[];
     }
   }
 
