@@ -11,7 +11,7 @@ export const environment = {
     issuer : 'https://apim.minegames.com.br/oauth2/token',
     loginUrl : "https://apim.minegames.com.br/oauth2/authorize",
     redirectUri : "http://players.minegames.com.br",
-    clientId : "xdtnOFzaaxOPB651ocEQSmiwn9ca",
+    clientId : "wbuZg5gO2xoIsifLnzfz0COQSQoa",
     scope : "openid",
     oidc : true
   },
