@@ -47,32 +47,24 @@ export class AppComponent  {
   }
 
   ngOnInit(): void {
-    // recuperar o personal que está usando o sistema
     this.authenticate();
-    //this.load('um');
   }
 
   public authenticate() {
     console.log('authenticate');
-    //this.oauthService.tokenValidationHandler = new JwksValidationHandler();
-    //this.oauthService.jwks = {"keys":[{"kty":"RSA","e":"AQAB","use":"sig","kid":"d0ec514a32b6f88c0abd12a2840699bdd3deba9d","alg":"RS256","n":"ALLdgDZ_3VgFVU6VAnWg6UwJYtqdaaKccdzP5kk14F9qv___tPZnJmRmQhRdbyEyVDK-5xgiuRd2RIA9WSwWdsBUEiSLWOJGp9_NuoMcq9GVZ2fCZrDU8BQ8xDJ8v3LaJ4sJEtTaY2_aPl6NTfLEddtPWfqvAQL0szcIzgK7_bYZn-mQvDNhn_WP7M3qA23EaSb6G9wlxLM8hjvBLK4F4Ukdm_tQrhErsApa8zBAI4ysE_1Qlq7_R7hn9kgX0Xjx7ndBwjtGX6GlWXRV0Bi9V3dsaF3Zbj4vovyUBJ1Oqfe1j5gzFzyU31NsFkGWmHAknoHOY_AqzHaTR3dziOlAeqk"}]}
-    this.oauthService.strictDiscoveryDocumentValidation = false;
-    //this.oauthService.issuer = 'https://app1ssosite015h.hom.sicredi.net:9443/oauth2/token';
-    //this.oauthService.issuer = 'https://localhost:9443/oauth2/token';
-    this.oauthService.issuer = 'https://app1ssosite015h.hom.sicredi.net:9443/oauth2/token';
-    
-    //this.oauthService.issuer = 'https://172.17.0.1:9443/oauth2/token';
-    this.oauthService.loginUrl = "https://app1ssosite015h.hom.sicredi.net:9443/oauth2/authorize"; //Id-Provider?
-    this.oauthService.redirectUri = "http://localhost:4200/";
-    this.oauthService.clientId = "xdtnOFzaaxOPB651ocEQSmiwn9ca";
-    this.oauthService.scope = "openid";
+    this.oauthService.strictDiscoveryDocumentValidation = environment.openid.strictDiscoveryDocumentValidation;
+    this.oauthService.issuer = environment.openid.issuer;
+    this.oauthService.loginUrl = environment.openid.loginUrl;
+    this.oauthService.redirectUri = environment.openid.redirectUri;
+    this.oauthService.clientId = environment.openid.clientId;
+    this.oauthService.scope = environment.openid.scope;
     this.oauthService.oidc = true;
     this.oauthService.setStorage(sessionStorage);
 
 /*
     console.log('loadDiscoveryDocument - inicio');
     //this.oauthService.loadDiscoveryDocumentAndTryLogin();
-    this.oauthService.loadDiscoveryDocument('https://app1ssosite014h.hom.sicredi.net:9443/oauth2/oidcdiscovery/.well-known/openid-configuration').then((doc) => {
+    this.oauthService.loadDiscoveryDocument(environment.openid.URLWELLKNOWN).then((doc) => {
       console.log('JWKS ' + JSON.stringify(this.oauthService.jwks) );
       this.oauthService.tryLogin({
         onTokenReceived: context => {
