@@ -1,13 +1,17 @@
-<h4>Username: {{username}}</h4> 
+<div style="max-width: 70%">
+  <h3>USERNAME COMMING FROM USERINFO ENDPOINT (SUB)</h3>
+  <h4>Username: {{username}}</h4> 
 
+  <h3>PLAYER LIST COMMING FROM AN API PUBLISHED ON WSO2 API-M </h3>
+  <div *ngFor="let player of players" >
+    {{player.id}}  {{player.nome}}  {{player.email}}  
+  </div>
 
-<div *ngFor="let player of players" >
-  {{player.id}}  {{player.nome}}  {{player.email}}  
+  <br>
+
+  <H3>INFORMATION ABOUT ID TOKEN AND ACCESS TOKEN</H3>
+  <h4>Access Token: {{accessToken}}</h4> is valid? <h4>{{validAccessToken}}</h4>
+  <h4>Id Token: {{idToken}}</h4> is valid? <h4>{{validIdToken}}</h4>
+
+  <button md-button (click)="refreshToken()">Refresh Token</button>
 </div>
-
-<br>
-
-<h4>Access Token: {{accessToken}}</h4> is valid? <h4>{{validAccessToken}}</h4>
-<h4>Id Token: {{idToken}}</h4> is valid? <h4>{{validIdToken}}</h4>
-
-<button md-button (click)="refreshToken()">Refresh Token</button>
