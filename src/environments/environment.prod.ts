@@ -8,7 +8,7 @@ export const environment = {
     issuer : 'https://identity.minegames.com.br/oauth2/token',
     loginUrl : "https://identity.minegames.com.br/oauth2/authorize",
     redirectUri : "http://players.minegames.com.br",
-    clientId : "wrmmzq3f7Zw3c2iN528JgfmsKqca",
+    clientId : "wbuZg5gO2xoIsifLnzfz0COQSQoa",
     scope : "openid profile",
     oidc : true
   },
