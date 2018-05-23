@@ -2,7 +2,7 @@
     <mat-toolbar color="primary">
       <span><mat-icon>mood</mat-icon></span>
   
-      <span>Yay, Material in Angular 2!</span>
+      <span>MineGames Players Portal</span>
   
       <button mat-icon-button [mat-menu-trigger-for]="menu">
         <mat-icon>more_vert</mat-icon>
@@ -13,39 +13,39 @@
       <button mat-menu-item>Option 2</button>
     </mat-menu>
   
-    <mat-card>
-      <button mat-button>All</button>
-      <button mat-raised-button>Of</button>
-      <button mat-raised-button color="primary">The</button>
-      <button mat-raised-button color="accent">Buttons</button>
-    </mat-card>
-  
     <span class="done">
       <button mat-fab>
         <mat-icon>check circle</mat-icon>
       </button>
     </span>
   </div>
-  
+
 <mat-card> 
-    <mat-card-title>USERNAME COMMING FROM USERINFO ENDPOINT (SUB)</mat-card-title>
+    <mat-card-title>Userinfo</mat-card-title>
+    <mat-card-subtitle>
+      {{username}}
+    </mat-card-subtitle>
+</mat-card>
+
+<mat-card>
+  <mat-card-title>API-M Call</mat-card-title>
     <mat-card-content>
-      Username: {{username}}
-    </mat-card-content>
-</mat-card>
-
-<mat-card>
-  <h3>PLAYER LIST COMMING FROM AN API PUBLISHED ON WSO2 API-M </h3>
-  <div *ngFor="let player of players" >
-    {{player.id}}  {{player.nome}}  {{player.email}}  
-  </div>
+        <mat-list role="list">
+          <mat-list-item role="listitem" *ngFor"let player of players" >
+              {{player.id}}  {{player.nome}}  {{player.email}}
+              </mat-list-item>
+        </mat-list>
+  </mat-card-content>
 </mat-card>
 <mat-card>
-
-  <H3>INFORMATION ABOUT ID TOKEN AND ACCESS TOKEN</H3>
-  <h4>Access Token: {{accessToken}}</h4> is valid? <h4>{{validAccessToken}}</h4>
-  <h4>Id Token: {{idToken}}</h4> is valid? <h4>{{validIdToken}}</h4>
-  <h4>Id Token: {{jsonIdToken}}</h4> 
+  <mat-card-title>Token Info</mat-card-title>
+  <mat-card-content>
+      <mat-list role="list">
+          <mat-list-item role="listitem">Access Token: {{accessToken}} is valid? {{validAccessToken}}</mat-list-item>
+          <mat-list-item role="listitem">AId Token: {{idToken}} is valid? {{validIdToken}}</mat-list-item>
+          <mat-list-item role="listitem">Id Token: {{jsonIdToken}}</mat-list-item>
+      </mat-list>
+  </mat-card-content>
 </mat-card>
 
-<button md-button (click)="refreshToken()">Refresh Token</button>
+<button mat-raised-button (click)="refreshToken()">Refresh Token</button>
