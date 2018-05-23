@@ -21,6 +21,7 @@ export class AppComponent  {
   filteredList: Player[];
   username: string;
   title: string;
+  exp: Date;
   logotipo: string;
   routes: Object[] = [
     {
@@ -101,6 +102,7 @@ export class AppComponent  {
     this.accessToken = this.oauthService.getAccessToken();
     this.idToken = this.oauthService.getIdToken();
     this.jsonIdToken = this.parseJwt( this.idToken );
+    this.exp = this.ConvertToDatetime( this.jsonIdToken['exp']);
 
     try {
       let self = this;
@@ -123,6 +125,12 @@ export class AppComponent  {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace('-', '+').replace('_', '/');
     return JSON.stringify(JSON.parse(window.atob(base64)));
+  }
+
+  public ConvertToDatetime(dateValue) {
+    var regex = /-?\d+/;
+    var match = regex.exec(dateValue);
+    return new Date(parseInt(match[0]));
   }
 
 }
