@@ -14,5 +14,9 @@
 <body>
 <base href="/">
 <my-app>loading</my-app>
+
+  <script>
+  parent.postMessage(location.hash, location.origin);
+  </script>
 </body>
 </html>

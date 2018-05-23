@@ -6,15 +6,15 @@
 export const environment = {
   production: false,
   api_gateway_url: "https://gateway.minegames.com.br/player/1.0.0/",
-  user_info_url: "https://gateway.minegames.com.br/userinfo",
+  user_info_url: "https://identity.minegames.com.br/oauth2/userinfo",
   openid : {
     strictDiscoveryDocumentValidation : false,
-    discovery_url : 'https://apim.minegames.com.br/oauth2/oidcdiscovery/.well-known/openid-configuration',
-    issuer : 'https://apim.minegames.com.br/oauth2/token',
-    loginUrl : "https://apim.minegames.com.br/oauth2/authorize",
+    discovery_url : 'https://identity.minegames.com.br/oauth2/oidcdiscovery/.well-known/openid-configuration',
+    issuer : 'https://identity.minegames.com.br/oauth2/token',
+    loginUrl : "https://identity.minegames.com.br/oauth2/authorize",
     redirectUri : "http://players.minegames.com.br",
-    clientId : "wbuZg5gO2xoIsifLnzfz0COQSQoa",
-    scope : "openid",
+    clientId : "wrmmzq3f7Zw3c2iN528JgfmsKqca",
+    scope : "openid profile",
     oidc : true
   },
   access_token: ""
