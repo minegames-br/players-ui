@@ -102,7 +102,7 @@ export class AppComponent  {
     this.accessToken = this.oauthService.getAccessToken();
     this.idToken = this.oauthService.getIdToken();
     let _idtoken = this.parseJwt( this.idToken );
-    this.jsonIdToken = JSON.stringify(this.jsonIdToken);
+    this.jsonIdToken = JSON.stringify(_idtoken);
     console.log( "exp: " + _idtoken.exp );
     this.exp = new Date( _idtoken.exp );
 
