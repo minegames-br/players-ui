@@ -101,9 +101,10 @@ export class AppComponent  {
     this.validIdToken = this.oauthService.hasValidIdToken();
     this.accessToken = this.oauthService.getAccessToken();
     this.idToken = this.oauthService.getIdToken();
-    this.jsonIdToken = this.parseJwt( this.idToken );
-    console.log( "exp: " + this.jsonIdToken.exp );
-    this.exp = new Date( this.jsonIdToken['exp'] );
+    let _idtoken = this.parseJwt( this.idToken );
+    this.jsonIdToken = JSON.stringify(this.jsonIdToken);
+    console.log( "exp: " + _idtoken.exp );
+    this.exp = new Date( _idtoken.exp );
 
     try {
       let self = this;
