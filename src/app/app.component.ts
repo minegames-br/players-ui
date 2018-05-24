@@ -57,6 +57,9 @@ export class AppComponent  {
   }
 
   public refreshToken() {
+    var d = new Date();
+    var n = d.getTime();
+    this.oauthService.scope = environment.openid.scope + ' ' + n;
     this.oauthService.silentRefresh();
   }
 
